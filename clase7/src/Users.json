@@ -1,0 +1,37 @@
+[
+	{
+		"id": 1,
+		"firstName": "Edgar73",
+		"lastName": "Steinberg",
+		"age": "34",
+		"course": "Programacion Backend"
+	},
+	{
+		"id": 2,
+		"firstName": "Ilu",
+		"lastName": "Peña",
+		"age": "57",
+		"course": "Programacion Backend"
+	},
+	{
+		"id": 3,
+		"firstName": "Edu",
+		"lastName": "villalba",
+		"age": "23",
+		"course": "Educacion Fisica"
+	},
+	{
+		"id": 4,
+		"firstName": "julio",
+		"lastName": "villalba",
+		"age": "33",
+		"course": "Parrillero"
+	},
+	{
+		"id": 5,
+		"firstName": "julio",
+		"lastName": "Steinberg",
+		"age": "73",
+		"course": "Dr"
+	}
+]
