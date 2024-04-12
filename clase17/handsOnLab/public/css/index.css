@@ -1,0 +1,35 @@
+*{
+    background-color: black;
+    color: white;
+}
+
+hr {
+    width: 100%;
+}
+
+.box{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+table {
+    font-family: arial, sans-serif;
+    border-collapse: collapse;
+    width: 100%;
+}
+  
+td, th {
+    border: 1px solid white;
+    text-align: left;
+    padding: 8px;
+}
+
+a {
+    color: white;
+}
+
+a:hover {
+    color: greenyellow
+}
