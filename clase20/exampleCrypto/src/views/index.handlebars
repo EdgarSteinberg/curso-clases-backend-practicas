@@ -1,0 +1,15 @@
+<div class="box">
+    <h1>Datos Basicos</h1>
+
+    <hr>
+    <div class="box">
+        <p><b>Nombre:</b> {{user.first_name}} </p>
+        <p><b>Apellido:</b> {{user.last_name}} </p>
+        <p><b>Email:</b> {{user.email}} </p>
+        <p><b>Age:</b> {{user.age}}</p>
+    </div>
+
+    <form class="box" method="post" action="/api/sessions/logout">
+        <button class="box" type="submit">Logout</button>
+    </form>
+</div>

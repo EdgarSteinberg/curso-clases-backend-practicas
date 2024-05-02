@@ -1,0 +1,32 @@
+body {
+    background-color: black;
+    color: white;
+}
+
+hr {
+    width: 100%;
+}
+
+.box {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+input {
+    margin-bottom: 5px;
+}
+
+.btnLogin {
+    background-color: rgb(175, 175, 175);
+    margin: 5px;
+    padding: 5px;
+    width: 100px;
+    border-radius: 7px;
+    transition: 1s;
+    cursor:pointer
+}
+.btnLogin:hover{
+    background-color: rgb(116, 113, 113);
+}
