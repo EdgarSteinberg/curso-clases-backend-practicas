@@ -1,0 +1,107 @@
+import Order from "../dao/classes/orderDAO.js";
+import User from '../dao/classes/userDAO.js';
+import Business from '../dao/classes/businessDAO.js'
+
+const orderService = new Order();
+const userService = new User();
+const businessService = new Business();
+
+const responseError = {
+    status: 'error',
+    error: 'Something went wrong, try again later'
+}
+
+export const getOrders = async (req, res) => {
+    const result = await orderService.getOrder();
+    res.send({
+        status: 'success',
+        result
+    });
+}
+
+export const getOrderById = async (req, res) => {
+    const { oid } = req.params;
+    const result = await orderService.getOrderById(oid)
+
+    if (!result) {
+        return res.status(500).send(responseError);
+    }
+    res.send({
+        status: 'success',
+        result
+    });
+}
+
+export const createOrder = async (req, res) => {
+    const { user, business, products } = req.body; // tarea: validar campos de entrada y estructura de datos
+
+    // Validación de los datos de entrada
+    if (!user || !business || !Array.isArray(products) || products.length === 0) {
+        return res.status(400).send({ error: 'Invalid input data' });
+    }
+
+    // Obtener usuario y negocio
+    const resultUser = await userService.getUserById(user);
+    const resultBusiness = await businessService.getBusinessById(business);
+
+    if (!resultUser || !resultBusiness) {
+        return res.status(500).send(responseError);
+    }
+    // Filtrar productos actuales del negocio
+    const currentOrders = resultBusiness.products.filter(product => products.includes(product.id));
+
+    // Calcular el precio total
+    // const sum = currentOrders.reduce((acc, prev) => {
+    //     acc += prev.price;
+    //     return acc;
+    // }, 0);
+    const totalPrice = currentOrders.reduce((acc, product) => acc + product.price, 0);
+
+    // Generar número de orden único
+    const orderNumber = Date.now() + Math.floor(Math.random() * 10000 + 1);
+
+    // Crear la orden
+    const order = {
+        number: orderNumber,
+        business,
+        user,
+        status: 'pending',
+        products: currentOrders.map(product => product.id),
+        totalPrice: totalPrice //sum
+    }
+
+    // Guardar la orden en la base de datos
+    const orderResult = await orderService.createOrder(order);
+
+    if (!orderResult) {
+        return res.status(500).send(responseError);
+    }
+
+    res.send({
+        status: 'success',
+        result: orderResult
+    });
+}
+
+export const resolveOrder = async (req, res) => {
+    const { status } = req.body
+    const { oid } = req.params
+
+    const order = await orderService.getOrderById(oid);
+
+    if (!order) {
+        return res.status(500).send(responseError);
+    }
+
+    order.status = status;
+
+    const result = await orderService.resolveOrder(order._id, order)
+
+    if (!result) {
+        return res.status(400).send(responseError);
+    }
+    res.send({
+        status: 'success',
+        result: 'Order Resolved!'
+    });
+}
