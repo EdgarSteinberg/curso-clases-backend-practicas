@@ -1,0 +1,20 @@
+{
+  "name": "handsonlab",
+  "type": "module",
+  "version": "1.0.0",
+  "description": "Project whit Express and Fakerjs",
+  "main": "app.js",
+  "scripts": {
+    "start": "nodemon src/app.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "Edgar B Stenberg",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.19.2"
+  },
+  "devDependencies": {
+    "@faker-js/faker": "^8.4.1"
+  }
+}

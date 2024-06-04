@@ -8,7 +8,7 @@ export default class ContactRespository{
     async getContacts(){
         return await this.dao.get();
     }
-    async createCotact(contact){
+    async createContact(contact){
         const newContact = new ContactDTO(contact);
         return await this.dao.create(newContact)
     }
