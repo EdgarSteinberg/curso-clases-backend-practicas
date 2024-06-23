@@ -1,11 +1,11 @@
-import {Command} from 'commander'
+import { Command } from 'commander'
 
 const program = new Command();
 
 program
-.option('-d', 'Descripcion de este comando', false )
-.option('-p <port>', 'Puero del servidor', 8080)
-.requiredOption('-u <user>', 'Usuario que ejecuta el programa', 'Usuario no declarado!')
+    .option('-d', 'Descripcion de este comando', false)
+    .option('-p <port>', 'Puero del servidor', 8080)
+    .requiredOption('-u <user>', 'Usuario que ejecuta el programa', 'Usuario no declarado!')
 
 program.parse();
 //console.log(process.argb.slice(2));
